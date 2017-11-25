@@ -11,15 +11,30 @@ abstract class AbstractRequest implements RequestInterface
 	/**
 	 * @var string
 	 */
-	private $type;
+	private $sessionId;
 
 	/**
 	 * @var string
 	 */
-	private $requestId;
+	private $applicationId;
+
+	/**
+	 * @var integer
+	 */
+	private $userId;
 
 	/**
 	 * @var string
+	 */
+	private $requestType;
+
+	/**
+	 * @var int
+	 */
+	private $requestId;
+
+	/**
+	 * @var \DateTime
 	 */
 	private $timestamp;
 
@@ -29,51 +44,71 @@ abstract class AbstractRequest implements RequestInterface
 	private $locale;
 
 	/**
-	 * @return string
+	 * @var string
 	 */
-	public function getType() : string
+	private $version;
+
+	/**
+	 * @param \stdClass $alexaRequest
+	 */
+	public function __construct(\stdClass $alexaRequest)
 	{
-		return $this->type;
+		$this->sessionId = $alexaRequest->session->sessionId;
+		$this->applicationId = $alexaRequest->session->application->applicationId;
+		$this->userId = $alexaRequest->session->user->userId;
+		$this->requestType = $alexaRequest->request->type;
+		$this->requestId = $alexaRequest->request->requestId;
+		$this->timestamp = $alexaRequest->request->timestamp;
+		$this->locale = $alexaRequest->request->locale;
+		$this->version = $alexaRequest->version;
 	}
 
 	/**
-	 * @param string $type
+	 * @return string
 	 */
-	public function setType(string $type)
+	public function getSessionId() : string
 	{
-		$this->type = $type;
+		return $this->sessionId;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getRequestId() : string
+	public function getApplicationId() : string
+	{
+		return $this->applicationId;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getUserId() : int
+	{
+		return $this->userId;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRequestType() : string
+	{
+		return $this->requestType;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getRequestId() : int
 	{
 		return $this->requestId;
 	}
 
 	/**
-	 * @param string $requestId
+	 * @return \DateTime
 	 */
-	public function setRequestId(string $requestId)
-	{
-		$this->requestId = $requestId;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getTimestamp() : string
+	public function getTimestamp() : \DateTime
 	{
 		return $this->timestamp;
-	}
-
-	/**
-	 * @param string $timestamp
-	 */
-	public function setTimestamp(string $timestamp)
-	{
-		$this->timestamp = $timestamp;
 	}
 
 	/**
@@ -85,10 +120,20 @@ abstract class AbstractRequest implements RequestInterface
 	}
 
 	/**
-	 * @param string $locale
+	 * @return string
 	 */
-	public function setLocale(string $locale)
+	public function getVersion() : string
 	{
-		$this->locale = $locale;
+		return $this->version;
+	}
+
+	/**
+	 * @param $instanceName
+	 *
+	 * @return bool
+	 */
+	public function instanceOf($instanceName): bool
+	{
+		return $this instanceof $instanceName;
 	}
 }

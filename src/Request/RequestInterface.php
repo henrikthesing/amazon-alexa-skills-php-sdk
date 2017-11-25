@@ -7,5 +7,4 @@ namespace AlexaSkills\Request;
  * @author Henrik Thesing <mail@henrikthesing.de>
  */
 interface RequestInterface {
-
 }

@@ -54,6 +54,7 @@ class RequestService
 		}
 
 		$requestType = $requestData->request->type;
+
 		if (!class_exists('\\AlexaSkills\\Request\\' . $requestType)) {
 			throw new InvalidRequestTypeException(
 				'Invalid request type "{$requestType}" found',

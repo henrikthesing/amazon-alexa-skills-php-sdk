@@ -26,6 +26,11 @@ abstract class AbstractRequest implements RequestInterface
 	/**
 	 * @var string
 	 */
+	private $apiAccessToken;
+
+	/**
+	 * @var string
+	 */
 	private $requestType;
 
 	/**
@@ -46,6 +51,11 @@ abstract class AbstractRequest implements RequestInterface
 	/**
 	 * @var string
 	 */
+	private $apiEndpoint;
+
+	/**
+	 * @var string
+	 */
 	private $version;
 
 	/**
@@ -56,10 +66,12 @@ abstract class AbstractRequest implements RequestInterface
 		$this->sessionId = $alexaRequest->session->sessionId;
 		$this->applicationId = $alexaRequest->session->application->applicationId;
 		$this->userId = $alexaRequest->session->user->userId;
+		#$this->apiAccessToken = $alexaRequest->context->System->apiAccessToken;
 		$this->requestType = $alexaRequest->request->type;
 		$this->requestId = $alexaRequest->request->requestId;
 		$this->timestamp = $alexaRequest->request->timestamp;
 		$this->locale = $alexaRequest->request->locale;
+		#$this->apiEndpoint = $alexaRequest->context->System->apiEndpoint;
 		$this->version = $alexaRequest->version;
 	}
 
@@ -85,6 +97,14 @@ abstract class AbstractRequest implements RequestInterface
 	public function getUserId() : int
 	{
 		return $this->userId;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getApiAccessToken() : string
+	{
+		return $this->apiAccessToken;
 	}
 
 	/**

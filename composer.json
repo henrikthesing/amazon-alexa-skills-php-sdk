@@ -1,6 +1,6 @@
 {
     "name": "henrikthesing/amazon-alexa-skills-php-sdk",
-    "description": "Amazon Alexa Skills Software Development Kit for PHP",
+    "description": "Amazon Alexa Skills Library for PHP",
     "license": "GPL-3.0",
     "type": "library",
     "authors": [

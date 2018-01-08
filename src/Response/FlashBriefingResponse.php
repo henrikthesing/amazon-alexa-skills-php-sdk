@@ -2,7 +2,6 @@
 
 namespace AlexaSkills\Response;
 
-use AlexaSkills\Exception\MissingResponseItemException;
 use AlexaSkills\Model\AbstractFlashBriefingItem;
 
 class FlashBriefingResponse extends AbstractResponse
@@ -54,20 +53,5 @@ class FlashBriefingResponse extends AbstractResponse
 			parent::buildResponse(),
 			$response
 		);
-	}
-
-	private function validate()
-	{
-		$items = $this->getItems();
-
-		if (empty($items)) {
-			throw new MissingResponseItemException('Missing FlashBriefing Response Item - Please add at least one FlashBriefing Item', 1515448412139);
-		}
-
-		$type = null;
-		foreach ($items as $item) {
-
-		}
-
 	}
 }

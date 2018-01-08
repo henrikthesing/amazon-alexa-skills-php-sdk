@@ -7,9 +7,11 @@ use AlexaSkills\Model\AbstractFlashBriefingItem;
 
 class FlashBriefingResponse extends AbstractResponse
 {
+	const RESPONSE_TYPE_JSON = 'json';
+	const RESPONSE_TYPE_RSS = 'rss';
 	const VALID_RESPONSE_TYPES = [
 		'json',
-		'xml'
+		'rss'
 	];
 
 	/**
@@ -39,7 +41,7 @@ class FlashBriefingResponse extends AbstractResponse
 	{
 		if (!in_array($responseType)) {
 			throw new InvalidResponseTypeException(
-				sprintf('Invalid response type "%s". Response type must be one of the values "json", "xml".', $responseType)
+				sprintf('Invalid response type "%s". Response type must be one of the values "json", "rss".', $responseType)
 			);
 		}
 		$this->responseType = $responseType;

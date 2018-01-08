@@ -28,13 +28,13 @@ class FlashBriefingAudioItem extends AbstractFlashBriefingItem
 	/**
 	 * @return array
 	 */
-	public function render() : array
+	public function renderJson() : array
 	{
 		return array_merge(
 			[
 				'streamUrl' => $this->getStreamUrl()
 			],
-			parent::render()
+			parent::renderJson()
 		);
 	}
 }

@@ -93,7 +93,7 @@ abstract class AbstractFlashBriefingItem
 	/**
 	 * @return array
 	 */
-	public function render() : array
+	public function renderJson() : array
 	{
 		return [
 			'uid' => $this->getId(),

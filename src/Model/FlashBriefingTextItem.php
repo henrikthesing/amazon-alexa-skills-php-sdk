@@ -28,13 +28,13 @@ class FlashBriefingTextItem extends AbstractFlashBriefingItem
 	/**
 	 * @return array
 	 */
-	public function render() : array
+	public function renderJson() : array
 	{
 		return array_merge(
 			[
 				'mainText' => $this->getMainText()
 			],
-			parent::render()
+			parent::renderJson()
 		);
 	}
 }

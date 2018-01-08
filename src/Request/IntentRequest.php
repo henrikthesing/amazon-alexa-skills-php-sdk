@@ -62,7 +62,7 @@ class IntentRequest extends AbstractRequest
 	 *
 	 * @return null|string
 	 */
-	public function getSlotValue(string $slotName): ?string
+	public function getSlotValue(string $slotName): string
 	{
 		return $this->slots[$slotName] ?? null;
 	}

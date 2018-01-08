@@ -14,7 +14,7 @@ class ResponseService
 
 	public function __construct()
 	{
-		$this->initHttpRequest();
+#		$this->initHttpRequest();
 	}
 
 	/**

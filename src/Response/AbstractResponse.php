@@ -13,6 +13,6 @@ class AbstractResponse implements ResponseInterface
 	 */
 	public function buildResponse(): array
 	{
-
+		return [];
 	}
 }

@@ -8,8 +8,8 @@ namespace AlexaSkills\Response;
  */
 class OutputSpeechResponse extends AbstractResponse
 {
-	const TYPE_TEXT = 'text';
-	const TYPE_SSML = 'ssml';
+	const TYPE_TEXT = 'PlainText';
+	const TYPE_SSML = 'SSML';
 
 	/**
 	 * @var string
@@ -57,15 +57,16 @@ class OutputSpeechResponse extends AbstractResponse
 	{
 		$response = array_merge(parent::buildResponse(),
 		[
-			'version' => 'version',
+			'version' => '1.0',
 			'sessionAttributes' => [
 				'key' => '',
 			],
 			'response' => [
 				'outputSpeech' => [
 					'type' => $this->type,
-					'text' => $this->text
-				]
+					'text' => $this->text,
+					'smml' => $this->smml,
+				],
 			],
 			'shouldEndSession' => true
 		]);
